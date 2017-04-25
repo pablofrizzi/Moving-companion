@@ -30,7 +30,7 @@ function loadData() {
     
     // NY Times AJAX request
     
-    var nytimesUrl = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + cityName + '&sort=oldest&api-key=3c2b347976404869946e1dcc15e46b03' ;
+    var nytimesUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + cityName + '&sort=oldest&api-key=3c2b347976404869946e1dcc15e46b03' ;
     
     $.getJSON(nytimesUrl, function(data){
        
@@ -48,7 +48,7 @@ function loadData() {
     
     // Wikipedia AJAX request
     
-    var wikiUrl = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + cityName + '&format=json&callback=wikiCallback';
+    var wikiUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&search=' + cityName + '&format=json&callback=wikiCallback';
     
     $.ajax({
         url: wikiUrl,
