@@ -4,12 +4,13 @@ function main() {
     $('#form-container').on('submit', loadData);
 }
 
-    var body = $('body');
-    var wikiEl = $('#wikipedia-links');
-    var nytHeaderEl = $('#nytimes-header');
-    var nytEl = $('#nytimes-articles');
-    var greeting = $('#greeting');
-    var img = $('.bgimg');
+var body = $('body');
+var wikiEl = $('#wikipedia-links');
+var wikiHeaderEl = $('#wikipedia-header');
+var nytHeaderEl = $('#nytimes-header');
+var nytEl = $('#nytimes-articles');
+var greeting = $('#greeting');
+var img = $('.bgimg');
 
 
 function dataClear() {
@@ -34,19 +35,27 @@ function prepareNYTimesData() {
     var cityName = $('#city').val();
     var nytimesUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + cityName + '&sort=oldest&api-key=3c2b347976404869946e1dcc15e46b03' ;
     
-    $.getJSON(nytimesUrl, function(data){
+    $.ajax({
+        url: nytimesUrl,
+        dataType: 'json',
+        
+        success: function(data){
        
         nytHeaderEl.text('New York Times Articles about ' + cityName);
         
-        var articles = data.response.docs;
-        for (var i = 0; i < articles.length; i++) {
-            var article = articles[i];
-            nytEl.append('<li class="article">'+
-                         '<a href="'+article.web_url+'">'+article.headline.main+'</a>'+'<p>' + article.snippet + '</p>'+'</li>');
-        };
-    }).error(function(e){
-        nytHeaderEl.text('New York Times Article Could Not Be Loaded');
-    });
+            var articles = data.response.docs;
+            for (var i = 0; i < articles.length; i++) {
+                var article = articles[i];
+                nytEl.append('<li class="article">'+
+                             '<a href="'+article.web_url+'">'+article.headline.main+'</a>'+'<p>' + article.snippet + '</p>'+'</li>');
+            }
+        },
+        
+        error: function(event) {
+           nytHeaderEl.text('New York Times Article Could Not Be Loaded'); 
+        }
+        
+    });   
 }
 
 function prepareWikiData() {
@@ -55,16 +64,20 @@ function prepareWikiData() {
     
     $.ajax({
         url: wikiUrl,
-        dataType: "jsonp",
+        dataType: 'jsonp',
         
         success: function(response) {
             var articleList = response[1];
             
             for (var i = 0; i < articleList.length; i++) {
                 articleStr = articleList[i];
-                var url = 'http://en.wikipedia.org/wiki/' + articleStr;
+                var url = 'http://en.  wikipedia.org/wiki/' + articleStr;
                 wikiEl.append('<li><a href="' + url + '">' + articleStr + '</a></li>');
-            };
+            }
+        },
+        
+        error: function(event) {
+           wikiHeaderEl.text('Wikipedia Links Could Not Be Loaded'); 
         }
         
     });
@@ -88,7 +101,7 @@ function loadData(event) {
     
     prepareWikiData();
     
-};
+}
 
 
 
