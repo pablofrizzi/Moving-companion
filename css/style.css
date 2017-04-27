@@ -1,45 +1,97 @@
-* {box-sizing:border-box;}
-body {background-color: #CCC;}
-
-.bgimg {
-    position:fixed;
-    top: 0;
-    left: 0;
-    width:100%;
-    z-index:-1;
-    opacity:1;
+@font-face {
+  font-family: 'Vollkorn';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Vollkorn Regular'), local('Vollkorn-Regular'), url(https://fonts.gstatic.com/s/vollkorn/v6/idGKtgpe38okB6bfeHMsLHYhjbSpvc47ee6xR_80Hnw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
 }
 
-.greeting {
-    color:black;
-    text-shadow: 1px 1px 3px rgba(255,255,255, .5);
+@media (min-width: 768px) {
+    .form-group {
+        margin: 0 15px;
+    }
+    
+    label {
+        margin-right: 7px;
+    }
+    
+    #form-container {
+        
+    }
+}
+
+body {
+    font-family: 'Vollkorn', serif;
+    color: #333; 
+}
+
+.divider {
+    margin: 40px 0;
+}
+
+#form-container {
     text-align: center;
 }
 
-.wikipedia-container {
-    float:right;
-    width:290px;
-    padding:10px;
-    margin-right: 10px;
-    background-color: rgba(255,255,255,0.7);
+#wikipedia-links {
+    padding-left: 0;
+}
+
+#wikipedia-links li {
+    list-style-type: none;
+}
+
+#wikipedia-links li a {
+    text-decoration: none;
 }
 
 .nytimes-container {
-    padding: 10px;
-    margin-right:300px;
-    background-color: rgba(255,255,255,0.7);
+    margin-bottom: 70px;
+}
+
+#nytimes-articles {
+    padding-left: 0;
+}
+
+#nytimes-articles li {
+    list-style-type: none;
+}
+
+#nytimes-articles li a {
+    text-decoration: none;
+}
+
+.bgimg {
+    
+    width: 100%
+    
+}
+
+.greeting {
+    text-align: center;
+    margin-top: 35px;
+    margin-bottom: 25px;
+}
+
+
+.wikipedia-container {
+       
+}
+
+.nytimes-container {
+           
 }
 
 .article-list {
-    margin: 0;
-    padding: 0;
+
 }
 
 .article {
-    list-style-type: none;
-    padding:10px;
-    border-top: 1px solid #CCC;
+
 }
+
 .article:first-child {
-    border-top:none;
+  
 }
+
+

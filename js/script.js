@@ -23,12 +23,12 @@ function main() {
 }
 
 function dataClear() {
-    // clear out old data before new request
     wikiEl.text('');
     nytEl.text('');
 }
 
 function prepareGoogleData() {
+    
     var streetName = $('#street').val();
     var address = streetName + ', ' + cityName.val();
     
@@ -49,12 +49,15 @@ function fetchData(url, dataType, renderContent, renderError) {
 }
 
 function renderNYTimesContent(data) {
+    
     var articles = data.response.docs; 
 
     for (var i = 0; i < articles.length; i++) {
         var article = articles[i]; 
-        nytEl.append('<li class="article">'+
-                     '<a href="'+article.web_url+'">'+article.headline.main+'</a>'+'<p>' + article.snippet + '</p>'+'</li>'); 
+        nytEl.append('<li class="article">'
+                     +'<a href="'+article.web_url+'">'+article.headline.main+'</a>'
+                     +'<p>'+article.snippet+'</p>'
+                     +'</li>'); 
     }
 }
 
@@ -72,13 +75,16 @@ function prepareNYTimesData() {
 }
 
 function renderWikiContent(data) {
+    
     var articles = data[1];
 
     for (var i = 0; i < articles.length; i++) {
 
         var article = articles[i];
 
-        wikiEl.append('<li><a href="' + 'http://en.wikipedia.org/wiki/' + article + '">' + article + '</a></li>');
+        wikiEl.append('<li>'
+                      +'<a href="'+'http://en.wikipedia.org/wiki/'+article+'">'+article+'</a>'
+                      +'</li>');
     }
 }
 
@@ -97,21 +103,8 @@ function loadData(event) {
     
     event.preventDefault();
         
-    dataClear();
-    
-    // Google Maps request
-    
-    prepareGoogleData();
-    
-    // NY Times AJAX request
-    
-    prepareNYTimesData();
-    
-    // Wikipedia AJAX request
-    
+    dataClear();  
+    prepareGoogleData();  
+    prepareNYTimesData();   
     prepareWikiData();   
 }
-
-
-
-
