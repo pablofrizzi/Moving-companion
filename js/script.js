@@ -34,7 +34,7 @@ function prepareGoogleData() {
     
     greeting.text('So, you want to live at ' + address + '?');
     
-    var streetViewUrl = 'http://maps.googleapis.com/maps/api/streetview?size=600x300&location=' + address + '';
+    var streetViewUrl = 'https://maps.googleapis.com/maps/api/streetview?size=600x300&location=' + address + '';
     
     img.attr("src", streetViewUrl); 
 }
